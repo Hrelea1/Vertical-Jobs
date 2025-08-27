@@ -5,8 +5,9 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Phone, Mail, MapPin, Clock, ArrowRight, Send } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, ArrowRight, Send, Calendar } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import AppointmentBooking from "@/components/AppointmentBooking";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -81,29 +82,59 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen pt-16">
-      {/* Hero Section */}
-      <section className="py-20 hero-section">
-        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 animate-fade-in">
-            Contact Us
-          </h1>
-          <p className="text-xl text-white/90 max-w-2xl mx-auto animate-fade-in">
-            Ready to start your construction project? Get in touch for a free consultation and detailed quote.
-          </p>
+      {/* Hero Section - Book Appointment */}
+      <section className="relative py-20 bg-gradient-to-br from-primary to-primary/80 text-white">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+              Schedule Your Free Consultation
+            </h1>
+            <p className="text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed mb-8">
+              Take the first step towards your dream construction project. Book an appointment with our experts and get a detailed quote.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4 text-lg">
+              <div className="flex items-center gap-2">
+                <Calendar className="w-5 h-5" />
+                <span>Free Consultation</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Clock className="w-5 h-5" />
+                <span>24hr Response</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <ArrowRight className="w-5 h-5" />
+                <span>Expert Advice</span>
+              </div>
+            </div>
+          </div>
+          
+          {/* Appointment Booking Form */}
+          <div className="max-w-4xl mx-auto">
+            <AppointmentBooking />
+          </div>
         </div>
       </section>
 
       {/* Contact Form and Info */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-foreground mb-4">
+              Alternative Contact Methods
+            </h2>
+            <p className="text-xl text-muted-foreground">
+              Prefer a different way to reach us? We're here to help.
+            </p>
+          </div>
+          
           <div className="grid lg:grid-cols-3 gap-12">
             {/* Contact Form */}
             <div className="lg:col-span-2">
               <Card className="construction-card">
                 <CardHeader>
-                  <CardTitle className="text-2xl">Get Your Free Quote</CardTitle>
+                  <CardTitle className="text-2xl">Request a Detailed Quote</CardTitle>
                   <p className="text-muted-foreground">
-                    Fill out the form below and we'll contact you within 24 hours to discuss your project.
+                    Need a comprehensive project quote? Fill out this detailed form and we'll provide you with a thorough estimate.
                   </p>
                 </CardHeader>
                 <CardContent>
@@ -362,8 +393,8 @@ const Contact = () => {
             Your construction project deserves expert attention and professional results
           </p>
           <Button size="lg" className="cta-button text-white px-8 py-6 text-lg" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-            Get Started Today
-            <ArrowRight className="ml-2 w-5 h-5" />
+            Book Appointment Now
+            <Calendar className="ml-2 w-5 h-5" />
           </Button>
         </div>
       </section>
