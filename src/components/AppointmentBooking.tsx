@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Home, Building2, Wrench, Layers, Triangle, Zap, Droplet, MessageSquare, Plus, ArrowRight, Sparkles } from 'lucide-react';
+import { Home, Building2, Wrench, Layers, Triangle, Zap, Droplet, MessageSquare, Plus, ArrowRight, Sparkles, ChevronLeft } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 import CongratsNotification from './CongratsNotification';
@@ -48,6 +48,10 @@ const AppointmentBooking = () => {
 
   const handleServiceSelect = (serviceName: string) => {
     setFormData(prev => ({ ...prev, service: serviceName }));
+  };
+
+  const handleBackToServices = () => {
+    setFormData(prev => ({ ...prev, service: '' }));
   };
 
   const validateForm = (): string | null => {
@@ -123,132 +127,149 @@ const AppointmentBooking = () => {
           <CardHeader className="text-center pb-2">
             <CardTitle className="flex items-center justify-center gap-3 text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
               <Sparkles className="w-8 h-8 text-primary" />
-              What Can We Build For You?
+              {!formData.service ? "What Can We Build For You?" : "Let's Get Started"}
             </CardTitle>
             <CardDescription className="text-lg text-muted-foreground mt-2">
-              Choose your service and let's start your project journey
+              {!formData.service 
+                ? "Choose your service and let's start your project journey"
+                : `Great choice! Now we need your contact information for ${formData.service}`
+              }
             </CardDescription>
           </CardHeader>
           
           <CardContent className="space-y-8">
-            {/* Service Selection */}
-            <div className="space-y-4">
-              <h3 className="text-xl font-semibold text-foreground">Select Your Service</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                {displayedServices.map((service) => {
-                  const Icon = service.icon;
-                  const isSelected = formData.service === service.name;
-                  return (
-                    <button
-                      key={service.name}
-                      type="button"
-                      onClick={() => handleServiceSelect(service.name)}
-                      className={`relative overflow-hidden rounded-2xl p-6 transition-all duration-300 group hover:scale-105 hover:shadow-xl ${
-                        isSelected 
-                          ? 'ring-2 ring-primary shadow-lg scale-105' 
-                          : 'hover:shadow-md'
-                      }`}
-                    >
-                      <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-10 group-hover:opacity-20 transition-opacity duration-300`} />
-                      <div className="relative z-10 flex flex-col items-center space-y-3">
-                        <div className={`p-3 rounded-full bg-gradient-to-br ${service.gradient} shadow-lg`}>
-                          <Icon className="w-6 h-6 text-white" />
-                        </div>
-                        <span className="font-medium text-sm text-center leading-tight text-foreground">
-                          {service.name}
-                        </span>
-                      </div>
-                      {isSelected && (
-                        <div className="absolute top-2 right-2">
-                          <div className="w-5 h-5 bg-primary rounded-full flex items-center justify-center">
-                            <div className="w-2 h-2 bg-white rounded-full" />
-                          </div>
-                        </div>
-                      )}
-                    </button>
-                  );
-                })}
-              </div>
-              
-              {!showAllServices && allServices.length > 4 && (
-                <div className="text-center">
-                  <Button 
-                    type="button"
-                    variant="outline" 
-                    onClick={() => setShowAllServices(true)}
-                    className="group border-dashed border-2 hover:border-primary transition-all duration-300"
-                  >
-                    <Plus className="w-4 h-4 mr-2 group-hover:rotate-90 transition-transform duration-300" />
-                    See More Services
-                  </Button>
-                </div>
-              )}
-            </div>
-
-            {/* Contact Form */}
-            <form onSubmit={handleSubmit} className="space-y-6">
+            {!formData.service ? (
+              // Service Selection Step
               <div className="space-y-4">
-                <h3 className="text-xl font-semibold text-foreground">Your Contact Information</h3>
+                <h3 className="text-xl font-semibold text-foreground">Select Your Service</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                  {displayedServices.map((service) => {
+                    const Icon = service.icon;
+                    return (
+                      <button
+                        key={service.name}
+                        type="button"
+                        onClick={() => handleServiceSelect(service.name)}
+                        className="relative overflow-hidden rounded-2xl p-6 transition-all duration-300 group hover:scale-105 hover:shadow-xl"
+                      >
+                        <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-10 group-hover:opacity-20 transition-opacity duration-300`} />
+                        <div className="relative z-10 flex flex-col items-center space-y-3">
+                          <div className={`p-3 rounded-full bg-gradient-to-br ${service.gradient} shadow-lg`}>
+                            <Icon className="w-6 h-6 text-white" />
+                          </div>
+                          <span className="font-medium text-sm text-center leading-tight text-foreground">
+                            {service.name}
+                          </span>
+                        </div>
+                      </button>
+                    );
+                  })}
+                </div>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="fullName" className="text-base font-medium">Full Name *</Label>
-                    <Input
-                      id="fullName"
-                      value={formData.fullName}
-                      onChange={(e) => handleInputChange('fullName', e.target.value)}
-                      placeholder="Enter your full name"
-                      className="h-12 rounded-xl border-2 focus:border-primary transition-all duration-300"
-                      required
-                    />
+                {!showAllServices && allServices.length > 4 && (
+                  <div className="text-center">
+                    <Button 
+                      type="button"
+                      variant="outline" 
+                      onClick={() => setShowAllServices(true)}
+                      className="group border-dashed border-2 hover:border-primary transition-all duration-300"
+                    >
+                      <Plus className="w-4 h-4 mr-2 group-hover:rotate-90 transition-transform duration-300" />
+                      See More Services
+                    </Button>
                   </div>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="phone" className="text-base font-medium">Phone Number *</Label>
-                    <Input
-                      id="phone"
-                      type="tel"
-                      value={formData.phone}
-                      onChange={(e) => handleInputChange('phone', e.target.value)}
-                      placeholder="(555) 123-4567"
-                      className="h-12 rounded-xl border-2 focus:border-primary transition-all duration-300"
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="email" className="text-base font-medium">Email Address *</Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={(e) => handleInputChange('email', e.target.value)}
-                    placeholder="your.email@example.com"
-                    className="h-12 rounded-xl border-2 focus:border-primary transition-all duration-300"
-                    required
-                  />
-                </div>
-              </div>
-
-              <Button 
-                type="submit" 
-                className="w-full h-14 text-lg font-semibold rounded-xl bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 transition-all duration-300 shadow-lg hover:shadow-xl group" 
-                disabled={isSubmitting || !formData.service}
-              >
-                {isSubmitting ? (
-                  <>
-                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-3" />
-                    Submitting Request...
-                  </>
-                ) : (
-                  <>
-                    Get Your Free Quote
-                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-                  </>
                 )}
-              </Button>
-            </form>
+              </div>
+            ) : (
+              // Contact Form Step
+              <div className="space-y-6">
+                <div className="flex items-center gap-3 mb-6">
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="sm"
+                    onClick={handleBackToServices}
+                    className="group"
+                  >
+                    <ChevronLeft className="w-4 h-4 mr-1 group-hover:-translate-x-1 transition-transform duration-300" />
+                    Back
+                  </Button>
+                  <div className="flex items-center gap-2">
+                    <div className={`p-2 rounded-lg bg-gradient-to-br ${allServices.find(s => s.name === formData.service)?.gradient} shadow-lg`}>
+                      {(() => {
+                        const Icon = allServices.find(s => s.name === formData.service)?.icon || Sparkles;
+                        return <Icon className="w-5 h-5 text-white" />;
+                      })()}
+                    </div>
+                    <span className="font-medium text-foreground">{formData.service}</span>
+                  </div>
+                </div>
+
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="space-y-4">
+                    <h3 className="text-xl font-semibold text-foreground">Your Contact Information</h3>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="fullName" className="text-base font-medium">Full Name *</Label>
+                        <Input
+                          id="fullName"
+                          value={formData.fullName}
+                          onChange={(e) => handleInputChange('fullName', e.target.value)}
+                          placeholder="Enter your full name"
+                          className="h-12 rounded-xl border-2 focus:border-primary transition-all duration-300"
+                          required
+                        />
+                      </div>
+                      
+                      <div className="space-y-2">
+                        <Label htmlFor="phone" className="text-base font-medium">Phone Number *</Label>
+                        <Input
+                          id="phone"
+                          type="tel"
+                          value={formData.phone}
+                          onChange={(e) => handleInputChange('phone', e.target.value)}
+                          placeholder="(555) 123-4567"
+                          className="h-12 rounded-xl border-2 focus:border-primary transition-all duration-300"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="email" className="text-base font-medium">Email Address *</Label>
+                      <Input
+                        id="email"
+                        type="email"
+                        value={formData.email}
+                        onChange={(e) => handleInputChange('email', e.target.value)}
+                        placeholder="your.email@example.com"
+                        className="h-12 rounded-xl border-2 focus:border-primary transition-all duration-300"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <Button 
+                    type="submit" 
+                    className="w-full h-14 text-lg font-semibold rounded-xl bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 transition-all duration-300 shadow-lg hover:shadow-xl group" 
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-3" />
+                        Submitting Request...
+                      </>
+                    ) : (
+                      <>
+                        Get Your Free Quote
+                        <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+                      </>
+                    )}
+                  </Button>
+                </form>
+              </div>
+            )}
           </CardContent>
         </Card>
       </div>
