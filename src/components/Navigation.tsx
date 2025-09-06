@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X, Phone, LogIn, LogOut, Settings } from "lucide-react";
+import { useAuth } from "@/contexts/AuthContext";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const { user, profile, signOut } = useAuth();
 
   const navItems = [
     { name: "Home", path: "/" },
@@ -13,6 +15,11 @@ const Navigation = () => {
     { name: "Services", path: "/services" },
     { name: "Contact", path: "/contact" }
   ];
+
+  // Add dashboard to nav items only for admin users
+  const adminNavItems = profile?.is_admin 
+    ? [...navItems, { name: "Dashboard", path: "/dashboard" }]
+    : navItems;
 
   return (
     <nav className="bg-background/95 backdrop-blur-sm border-b border-border sticky top-0 z-50">
@@ -27,7 +34,7 @@ const Navigation = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
+            {adminNavItems.map((item) => (
               <Link
                 key={item.name}
                 to={item.path}
@@ -40,10 +47,34 @@ const Navigation = () => {
                 {item.name}
               </Link>
             ))}
-            <Button variant="default" className="ml-4">
-              <Phone className="w-4 h-4 mr-2" />
-              Call Now
-            </Button>
+            
+            <div className="flex items-center space-x-2 ml-4">
+              {user ? (
+                <>
+                  <span className="text-sm text-muted-foreground">
+                    Welcome, {profile?.username || user.email}
+                  </span>
+                  {profile?.is_admin && (
+                    <Settings className="w-4 h-4 text-primary" />
+                  )}
+                  <Button variant="outline" size="sm" onClick={signOut}>
+                    <LogOut className="w-4 h-4 mr-2" />
+                    Sign Out
+                  </Button>
+                </>
+              ) : (
+                <Button variant="default" asChild>
+                  <Link to="/auth">
+                    <LogIn className="w-4 h-4 mr-2" />
+                    Sign In
+                  </Link>
+                </Button>
+              )}
+              <Button variant="default">
+                <Phone className="w-4 h-4 mr-2" />
+                Call Now
+              </Button>
+            </div>
           </div>
 
           {/* Mobile menu button */}
@@ -66,7 +97,7 @@ const Navigation = () => {
         {isOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-background border-t border-border">
-              {navItems.map((item) => (
+              {adminNavItems.map((item) => (
                 <Link
                   key={item.name}
                   to={item.path}
@@ -80,7 +111,29 @@ const Navigation = () => {
                   {item.name}
                 </Link>
               ))}
-              <div className="pt-2">
+              
+              <div className="pt-2 space-y-2">
+                {user ? (
+                  <>
+                    <div className="px-3 py-2 text-sm text-muted-foreground">
+                      Welcome, {profile?.username || user.email}
+                      {profile?.is_admin && (
+                        <Settings className="inline w-4 h-4 ml-2 text-primary" />
+                      )}
+                    </div>
+                    <Button variant="outline" className="w-full" onClick={signOut}>
+                      <LogOut className="w-4 h-4 mr-2" />
+                      Sign Out
+                    </Button>
+                  </>
+                ) : (
+                  <Button variant="default" className="w-full" asChild>
+                    <Link to="/auth" onClick={() => setIsOpen(false)}>
+                      <LogIn className="w-4 h-4 mr-2" />
+                      Sign In
+                    </Link>
+                  </Button>
+                )}
                 <Button variant="default" className="w-full">
                   <Phone className="w-4 h-4 mr-2" />
                   Call Now

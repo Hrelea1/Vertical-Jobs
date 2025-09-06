@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { ChevronDown, ChevronUp, User, Calendar, Phone, Mail, Settings } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import { useAuth } from "@/contexts/AuthContext";
 
 interface Appointment {
   id: string;
@@ -20,32 +19,15 @@ interface Appointment {
 }
 
 const Dashboard = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [loginId, setLoginId] = useState("");
-  const [password, setPassword] = useState("");
   const [appointments, setAppointments] = useState<Appointment[]>([]);
   const [expandedCards, setExpandedCards] = useState<Set<string>>(new Set());
   const [loading, setLoading] = useState(false);
   const { toast } = useToast();
+  const { profile, signOut } = useAuth();
 
-  const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Simple hardcoded authentication - in production this would be proper auth
-    if (loginId === "admin" && password === "dashboard123") {
-      setIsLoggedIn(true);
-      fetchAppointments();
-      toast({
-        title: "Login Successful",
-        description: "Welcome to the dashboard!",
-      });
-    } else {
-      toast({
-        title: "Login Failed",
-        description: "Invalid credentials. Try admin/dashboard123",
-        variant: "destructive",
-      });
-    }
-  };
+  useEffect(() => {
+    fetchAppointments();
+  }, []);
 
   const fetchAppointments = async () => {
     setLoading(true);
@@ -88,54 +70,6 @@ const Dashboard = () => {
     });
   };
 
-  if (!isLoggedIn) {
-    return (
-      <div className="min-h-screen bg-gradient-hero flex items-center justify-center p-4">
-        <Card className="w-full max-w-md">
-          <CardHeader className="text-center">
-            <div className="mx-auto w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center mb-4">
-              <Settings className="w-8 h-8 text-primary-foreground" />
-            </div>
-            <CardTitle className="text-2xl">Dashboard Login</CardTitle>
-            <p className="text-muted-foreground">Access the appointments dashboard</p>
-          </CardHeader>
-          <CardContent>
-            <form onSubmit={handleLogin} className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="loginId">Login ID</Label>
-                <Input
-                  id="loginId"
-                  type="text"
-                  value={loginId}
-                  onChange={(e) => setLoginId(e.target.value)}
-                  placeholder="Enter your login ID"
-                  required
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="password">Password</Label>
-                <Input
-                  id="password"
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Enter your password"
-                  required
-                />
-              </div>
-              <Button type="submit" className="w-full">
-                Login to Dashboard
-              </Button>
-              <p className="text-xs text-muted-foreground text-center">
-                Demo credentials: admin / dashboard123
-              </p>
-            </form>
-          </CardContent>
-        </Card>
-      </div>
-    );
-  }
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-background to-muted/30 p-4">
       <div className="max-w-6xl mx-auto">
@@ -145,12 +79,12 @@ const Dashboard = () => {
               Appointments Dashboard
             </h1>
             <p className="text-muted-foreground mt-2">
-              Manage and view all appointment bookings
+              Manage and view all appointment bookings - Welcome, {profile?.username}!
             </p>
           </div>
           <Button 
             variant="outline" 
-            onClick={() => setIsLoggedIn(false)}
+            onClick={signOut}
           >
             Logout
           </Button>
