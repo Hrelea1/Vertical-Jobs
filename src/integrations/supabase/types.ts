@@ -85,7 +85,10 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      mask_sensitive_data: {
+        Args: { input_text: string }
+        Returns: string
+      }
     }
     Enums: {
       appointment_status: "pending" | "confirmed" | "cancelled"
