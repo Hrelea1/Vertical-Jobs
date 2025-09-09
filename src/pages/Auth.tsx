@@ -145,9 +145,6 @@ const Auth = () => {
                       required
                     />
                   </div>
-                  <p className="text-xs text-muted-foreground">
-                    Use AdminDavid or AdminGeorge for admin access
-                  </p>
                 </div>
                 
                 <div className="space-y-2">
@@ -180,9 +177,6 @@ const Auth = () => {
                       required
                     />
                   </div>
-                  <p className="text-xs text-muted-foreground">
-                    Admin password: sallcf12Q!
-                  </p>
                 </div>
                 
                 <Button type="submit" className="w-full" disabled={loading}>
