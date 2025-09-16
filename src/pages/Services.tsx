@@ -7,74 +7,74 @@ const Services = () => {
   const mainServices = [
     {
       icon: <Building className="w-12 h-12 text-accent" />,
-      title: "Commercial Construction",
-      description: "From office buildings to retail spaces, we deliver commercial projects that meet the highest standards of quality and functionality.",
+      title: "Fachadas",
+      description: "Rehabilitación y mantenimiento de fachadas con técnicas modernas y materiales de alta calidad para garantizar durabilidad y estética.",
       features: [
-        "Office Buildings & Corporate Headquarters",
-        "Retail Stores & Shopping Centers",
-        "Warehouses & Industrial Facilities", 
-        "Healthcare & Educational Facilities"
+        "Limpieza y Restauración de Fachadas",
+        "Reparación de Grietas y Fisuras",
+        "Aplicación de Monocapa",
+        "Impermeabilización de Fachadas"
       ],
-      price: "Starting at $200/sq ft"
+      price: "Desde $50/m²"
     },
     {
       icon: <Home className="w-12 h-12 text-accent" />,
-      title: "Residential Building",
-      description: "Custom homes and residential developments built with attention to detail and personalized to your lifestyle needs.",
+      title: "Fontanería",
+      description: "Servicios completos de plomería para instalaciones nuevas, reparaciones y mantenimiento de sistemas hidráulicos.",
       features: [
-        "Custom Home Design & Build",
-        "Multi-Family Residential Complexes",
-        "Luxury Home Construction",
-        "Sustainable & Energy-Efficient Homes"
+        "Instalación de Tuberías y Sistemas",
+        "Reparación de Fugas y Averías",
+        "Mantenimiento Preventivo",
+        "Instalación de Bajantes"
       ],
-      price: "Starting at $150/sq ft"
+      price: "Desde $40/hora"
     },
     {
       icon: <Construction className="w-12 h-12 text-accent" />,
-      title: "Infrastructure Development", 
-      description: "Essential infrastructure projects including roads, bridges, and utilities that connect and serve communities.",
+      title: "Cubiertas y Tejados",
+      description: "Construcción, reparación y mantenimiento de cubiertas y tejados con materiales impermeables y duraderos.",
       features: [
-        "Road Construction & Paving",
-        "Bridge & Overpass Construction",
-        "Water & Sewer Systems",
-        "Municipal Infrastructure Projects"
+        "Construcción de Tejados Nuevos",
+        "Reparación de Tejados Existentes",
+        "Impermeabilización de Cubiertas",
+        "Instalación de Canalones"
       ],
-      price: "Contact for Quote"
+      price: "Desde $60/m²"
     },
     {
       icon: <Wrench className="w-12 h-12 text-accent" />,
-      title: "Renovation & Remodeling",
-      description: "Transform existing spaces with comprehensive renovation services that breathe new life into buildings.",
+      title: "Pinturas",
+      description: "Servicios profesionales de pintura interior y exterior con acabados perfectos y materiales de primera calidad.",
       features: [
-        "Complete Building Renovations",
-        "Kitchen & Bathroom Remodeling",
-        "Office Space Modernization",
-        "Historic Building Restoration"
+        "Pintura Interior y Exterior",
+        "Preparación y Tratamiento de Superficies",
+        "Aplicación de Esmaltes y Barnices",
+        "Acabados Decorativos Especiales"
       ],
-      price: "Starting at $75/sq ft"
+      price: "Desde $15/m²"
     }
   ];
 
   const additionalServices = [
     {
       icon: <Truck className="w-8 h-8 text-primary" />,
-      title: "Site Preparation",
-      description: "Land clearing, excavation, and site preparation for all project types."
+      title: "Patios",
+      description: "Construcción y renovación de patios con materiales duraderos y diseños funcionales."
     },
     {
       icon: <Hammer className="w-8 h-8 text-primary" />,
-      title: "Concrete & Foundation",
-      description: "Professional concrete work and foundation installation services."
+      title: "Bajantes",
+      description: "Instalación y reparación de sistemas de bajantes para evacuación de aguas pluviales."
     },
     {
       icon: <Shield className="w-8 h-8 text-primary" />,
-      title: "Project Management",
-      description: "End-to-end project coordination and management services."
+      title: "Monocapa",
+      description: "Aplicación profesional de revestimientos monocapa para protección y estética de fachadas."
     },
     {
       icon: <Clock className="w-8 h-8 text-primary" />,
-      title: "Emergency Repairs",
-      description: "24/7 emergency construction and repair services available."
+      title: "Urgencias 24h",
+      description: "Servicios de emergencia disponibles las 24 horas para reparaciones urgentes."
     }
   ];
 
@@ -84,10 +84,10 @@ const Services = () => {
       <section className="py-20 hero-section">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 animate-fade-in">
-            Our Services
+            Nuestros Servicios
           </h1>
           <p className="text-xl text-white/90 max-w-2xl mx-auto animate-fade-in">
-            Comprehensive construction solutions for every project type and scale. From concept to completion, we've got you covered.
+            Soluciones integrales de construcción vertical para todo tipo de proyectos. Del concepto a la finalización, te tenemos cubierto.
           </p>
         </div>
       </section>
@@ -97,10 +97,10 @@ const Services = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-foreground mb-4">
-              Core Construction Services
+              Servicios Principales de Construcción
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Professional construction services tailored to meet your specific needs and budget
+              Servicios profesionales de construcción adaptados a tus necesidades específicas y presupuesto
             </p>
           </div>
           
@@ -137,7 +137,7 @@ const Services = () => {
                     </span>
                     <Link to="/contact">
                       <Button className="cta-button">
-                        Get Quote
+                        Obtener Cotización
                         <ArrowRight className="ml-2 w-4 h-4" />
                       </Button>
                     </Link>
@@ -154,10 +154,10 @@ const Services = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-foreground mb-4">
-              Additional Services
+              Servicios Adicionales
             </h2>
             <p className="text-xl text-muted-foreground">
-              Supporting services to ensure project success from start to finish
+              Servicios de apoyo para garantizar el éxito del proyecto de principio a fin
             </p>
           </div>
           
@@ -186,20 +186,20 @@ const Services = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-foreground mb-4">
-              Our Process
+              Nuestro Proceso
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              A systematic approach ensuring quality results and smooth project execution
+              Un enfoque sistemático que asegura resultados de calidad y ejecución fluida del proyecto
             </p>
           </div>
           
           <div className="grid md:grid-cols-5 gap-8">
             {[
-              { step: "01", title: "Consultation", description: "Initial project discussion and needs assessment" },
-              { step: "02", title: "Planning", description: "Detailed project planning and design development" },
-              { step: "03", title: "Permitting", description: "Obtaining all necessary permits and approvals" },
-              { step: "04", title: "Construction", description: "Professional construction with regular updates" },
-              { step: "05", title: "Completion", description: "Final inspection and project handover" }
+              { step: "01", title: "Consulta", description: "Discusión inicial del proyecto y evaluación de necesidades" },
+              { step: "02", title: "Planificación", description: "Planificación detallada del proyecto y desarrollo del diseño" },
+              { step: "03", title: "Permisos", description: "Obtención de todos los permisos y aprobaciones necesarios" },
+              { step: "04", title: "Construcción", description: "Construcción profesional con actualizaciones regulares" },
+              { step: "05", title: "Finalización", description: "Inspección final y entrega del proyecto" }
             ].map((item, index) => (
               <div key={index} className="text-center group">
                 <div className="w-16 h-16 bg-primary text-white rounded-full mx-auto mb-4 flex items-center justify-center text-xl font-bold group-hover:bg-accent transition-colors">
@@ -222,10 +222,10 @@ const Services = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-foreground mb-4">
-              Our Guarantees
+              Nuestras Garantías
             </h2>
             <p className="text-xl text-muted-foreground">
-              Your peace of mind is our priority
+              Tu tranquilidad es nuestra prioridad
             </p>
           </div>
           
@@ -234,10 +234,10 @@ const Services = () => {
               <CardContent className="p-6">
                 <Shield className="w-12 h-12 text-accent mx-auto mb-4" />
                 <h3 className="text-xl font-semibold text-foreground mb-3">
-                  Quality Guarantee
+                  Garantía de Calidad
                 </h3>
                 <p className="text-muted-foreground">
-                  2-year warranty on all construction work with comprehensive coverage
+                  Garantía de 2 años en todos los trabajos de construcción con cobertura integral
                 </p>
               </CardContent>
             </Card>
@@ -245,10 +245,10 @@ const Services = () => {
               <CardContent className="p-6">
                 <Clock className="w-12 h-12 text-accent mx-auto mb-4" />
                 <h3 className="text-xl font-semibold text-foreground mb-3">
-                  On-Time Completion
+                  Finalización a Tiempo
                 </h3>
                 <p className="text-muted-foreground">
-                  Projects completed on schedule or we cover delay costs
+                  Proyectos completados según cronograma o cubrimos los costos de retraso
                 </p>
               </CardContent>
             </Card>
@@ -256,10 +256,10 @@ const Services = () => {
               <CardContent className="p-6">
                 <Building className="w-12 h-12 text-accent mx-auto mb-4" />
                 <h3 className="text-xl font-semibold text-foreground mb-3">
-                  Budget Protection
+                  Protección de Presupuesto
                 </h3>
                 <p className="text-muted-foreground">
-                  Fixed-price contracts with no hidden fees or surprise charges
+                  Contratos a precio fijo sin tarifas ocultas o cargos sorpresa
                 </p>
               </CardContent>
             </Card>
@@ -271,21 +271,21 @@ const Services = () => {
       <section className="py-20 hero-section">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Ready to Start Your Project?
+            ¿Listo Para Comenzar Tu Proyecto?
           </h2>
           <p className="text-xl text-white/90 mb-8">
-            Get a detailed quote for your construction project today
+            Obtén una cotización detallada para tu proyecto de construcción hoy
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/contact">
               <Button size="lg" className="cta-button text-white px-8 py-6 text-lg">
-                Get Free Quote
+                Cotización Gratis
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>
             <Link to="/about">
               <Button size="lg" variant="outline" className="px-8 py-6 text-lg border-white text-white hover:bg-white hover:text-primary">
-                Learn About Us
+                Conoce Sobre Nosotros
               </Button>
             </Link>
           </div>

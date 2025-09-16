@@ -8,44 +8,44 @@ import servicesImage from "@/assets/services-construction.jpg";
 const Index = () => {
   const services = [
     {
-      title: "Commercial Construction",
-      description: "Large-scale building projects for businesses and commercial properties.",
+      title: "Fachadas",
+      description: "Rehabilitación y mantenimiento de fachadas con técnicas modernas y materiales de calidad.",
       icon: "🏢"
     },
     {
-      title: "Residential Building",
-      description: "Custom homes and residential developments built to perfection.",
+      title: "Fontanería",
+      description: "Instalación y reparación de sistemas de plomería profesional para todo tipo de edificios.",
+      icon: "🔧"
+    },
+    {
+      title: "Cubiertas y Tejados",
+      description: "Construcción y reparación de cubiertas impermeables y sistemas de tejados duraderos.",
       icon: "🏠"
     },
     {
-      title: "Infrastructure Development",
-      description: "Roads, bridges, and essential infrastructure projects.",
-      icon: "🌉"
-    },
-    {
-      title: "Renovation & Remodeling",
-      description: "Transform existing spaces with our expert renovation services.",
-      icon: "🔨"
+      title: "Pinturas",
+      description: "Servicios de pintura interior y exterior con acabados perfectos y materiales premium.",
+      icon: "🎨"
     }
   ];
 
   const testimonials = [
     {
-      name: "Sarah Johnson",
-      company: "Metro Development",
-      text: "BuildPro delivered our commercial project on time and within budget. Outstanding quality!",
+      name: "María González",
+      company: "Edificio Residencial Sol",
+      text: "Vertical Jobs realizó un trabajo excepcional en la fachada de nuestro edificio. Profesionales, puntuales y dentro del presupuesto.",
       rating: 5
     },
     {
-      name: "Michael Chen",
-      company: "Residential Client",
-      text: "They built our dream home. The attention to detail and professionalism was exceptional.",
+      name: "Carlos Ruiz",
+      company: "Cliente Residencial",
+      text: "La reparación de nuestro tejado fue perfecta gracias a la experiencia y atención al detalle del equipo.",
       rating: 5
     },
     {
-      name: "David Rodriguez",
-      company: "City Planning Dept.",
-      text: "Reliable partner for municipal infrastructure projects. Highly recommended.",
+      name: "Ana Martínez",
+      company: "Martínez Propiedades",
+      text: "Servicios de fontanería excepcionales. Superaron nuestras expectativas en todos los aspectos.",
       rating: 5
     }
   ];
@@ -62,22 +62,22 @@ const Index = () => {
         </div>
         <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 animate-fade-in">
-            Building Your 
-            <span className="bg-gradient-orange bg-clip-text text-transparent"> Vision</span>
+            Construyendo Tu 
+            <span className="bg-gradient-orange bg-clip-text text-transparent"> Visión</span>
           </h1>
           <p className="text-xl md:text-2xl text-white/90 mb-8 animate-fade-in">
-            Professional construction services for commercial, residential, and infrastructure projects
+            Servicios profesionales de construcción vertical para proyectos comerciales, residenciales y de mantenimiento
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in">
             <Link to="/contact">
               <Button size="lg" className="cta-button text-white px-8 py-6 text-lg">
-                Get Free Quote
+                Cotización Gratis
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>
             <Link to="/services">
               <Button size="lg" variant="outline" className="px-8 py-6 text-lg border-white text-white hover:bg-white hover:text-primary">
-                Our Services
+                Nuestros Servicios
               </Button>
             </Link>
           </div>
@@ -89,10 +89,10 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Our Expertise
+              Nuestra Experiencia
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              From concept to completion, we deliver exceptional construction solutions
+              Del concepto a la ejecución, ofrecemos soluciones excepcionales de construcción vertical
             </p>
           </div>
           
@@ -115,7 +115,7 @@ const Index = () => {
           <div className="text-center mt-12">
             <Link to="/services">
               <Button size="lg" className="cta-button">
-                View All Services
+                Ver Todos los Servicios
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>
@@ -129,29 +129,29 @@ const Index = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-                25+ Years of Excellence
+                25+ Años de Excelencia
               </h2>
               <p className="text-lg text-muted-foreground mb-6">
-                BuildPro has been the trusted construction partner for businesses and homeowners across the region. 
-                Our commitment to quality, safety, and customer satisfaction drives everything we do.
+                Vertical Jobs ha sido el socio de confianza en construcción para empresas y propietarios en toda la región. 
+                Nuestro compromiso con la calidad, seguridad y satisfacción del cliente impulsa todo lo que hacemos.
               </p>
               <div className="space-y-4 mb-8">
                 <div className="flex items-center">
                   <CheckCircle className="w-6 h-6 text-primary mr-3" />
-                  <span className="text-foreground">Licensed and Insured</span>
+                  <span className="text-foreground">Licenciados y Asegurados</span>
                 </div>
                 <div className="flex items-center">
                   <CheckCircle className="w-6 h-6 text-primary mr-3" />
-                  <span className="text-foreground">OSHA Certified Team</span>
+                  <span className="text-foreground">Equipo Certificado OSHA</span>
                 </div>
                 <div className="flex items-center">
                   <CheckCircle className="w-6 h-6 text-primary mr-3" />
-                  <span className="text-foreground">24/7 Project Support</span>
+                  <span className="text-foreground">Soporte 24/7 de Proyecto</span>
                 </div>
               </div>
               <Link to="/about">
                 <Button size="lg" variant="outline">
-                  Learn More About Us
+                  Conoce Más Sobre Nosotros
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
               </Link>
@@ -159,7 +159,7 @@ const Index = () => {
             <div className="relative">
               <img 
                 src={servicesImage} 
-                alt="Construction Services" 
+                alt="Servicios de Construcción" 
                 className="rounded-lg shadow-construction"
               />
             </div>
@@ -172,10 +172,10 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-              What Our Clients Say
+              Lo Que Dicen Nuestros Clientes
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Don't take our word for it - hear from satisfied customers
+              No nos creas solo a nosotros - escucha a nuestros clientes satisfechos
             </p>
           </div>
 
@@ -206,21 +206,21 @@ const Index = () => {
       <section className="py-20 hero-section">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Ready to Start Your Project?
+            ¿Listo Para Comenzar Tu Proyecto?
           </h2>
           <p className="text-xl text-white/90 mb-8">
-            Get in touch today for a free consultation and quote
+            Ponte en contacto hoy para una consulta y cotización gratuita
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/contact">
               <Button size="lg" className="cta-button text-white px-8 py-6 text-lg">
-                Get Free Quote
+                Cotización Gratis
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>
             <Button size="lg" variant="outline" className="px-8 py-6 text-lg border-white text-white hover:bg-white hover:text-primary">
               <Phone className="mr-2 w-5 h-5" />
-              Call (555) 123-4567
+              Llamar (555) 123-4567
             </Button>
           </div>
         </div>
@@ -231,22 +231,22 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-4 gap-8">
             <div>
-              <h3 className="text-xl font-bold mb-4">BuildPro</h3>
+              <h3 className="text-xl font-bold mb-4">Vertical Jobs</h3>
               <p className="text-background/70">
-                Professional construction services you can trust.
+                Servicios profesionales de construcción en los que puedes confiar.
               </p>
             </div>
             <div>
-              <h4 className="font-semibold mb-4">Services</h4>
+              <h4 className="font-semibold mb-4">Servicios</h4>
               <ul className="space-y-2 text-background/70">
-                <li>Commercial Construction</li>
-                <li>Residential Building</li>
-                <li>Infrastructure</li>
-                <li>Renovation</li>
+                <li>Fachadas</li>
+                <li>Fontanería</li>
+                <li>Cubiertas y Tejados</li>
+                <li>Pinturas</li>
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold mb-4">Contact</h4>
+              <h4 className="font-semibold mb-4">Contacto</h4>
               <div className="space-y-2 text-background/70">
                 <div className="flex items-center">
                   <Phone className="w-4 h-4 mr-2" />
@@ -254,25 +254,25 @@ const Index = () => {
                 </div>
                 <div className="flex items-center">
                   <Mail className="w-4 h-4 mr-2" />
-                  info@buildpro.com
+                  info@verticaljobs.com
                 </div>
                 <div className="flex items-center">
                   <MapPin className="w-4 h-4 mr-2" />
-                  123 Construction Ave
+                  123 Construcción Ave
                 </div>
               </div>
             </div>
             <div>
-              <h4 className="font-semibold mb-4">Quick Links</h4>
+              <h4 className="font-semibold mb-4">Enlaces Rápidos</h4>
               <ul className="space-y-2 text-background/70">
-                <li><Link to="/about" className="hover:text-background transition-colors">About</Link></li>
-                <li><Link to="/services" className="hover:text-background transition-colors">Services</Link></li>
-                <li><Link to="/contact" className="hover:text-background transition-colors">Contact</Link></li>
+                <li><Link to="/about" className="hover:text-background transition-colors">Nosotros</Link></li>
+                <li><Link to="/services" className="hover:text-background transition-colors">Servicios</Link></li>
+                <li><Link to="/contact" className="hover:text-background transition-colors">Contacto</Link></li>
               </ul>
             </div>
           </div>
           <div className="border-t border-background/20 mt-8 pt-8 text-center text-background/70">
-            <p>&copy; 2024 BuildPro. All rights reserved.</p>
+            <p>&copy; 2024 Vertical Jobs. Todos los derechos reservados.</p>
           </div>
         </div>
       </footer>

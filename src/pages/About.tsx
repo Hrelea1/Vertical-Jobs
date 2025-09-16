@@ -41,10 +41,10 @@ const About = () => {
       <section className="py-20 hero-section">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 animate-fade-in">
-            About BuildPro
+            Sobre Vertical Jobs
           </h1>
           <p className="text-xl text-white/90 max-w-2xl mx-auto animate-fade-in">
-            Building excellence, one project at a time. Learn about our commitment to quality construction and customer satisfaction.
+            Construyendo excelencia, un proyecto a la vez. Conoce nuestro compromiso con la construcción de calidad y la satisfacción del cliente.
           </p>
         </div>
       </section>
@@ -55,19 +55,19 @@ const About = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-4xl font-bold text-foreground mb-6">
-                Our Story
+                Nuestra Historia
               </h2>
               <p className="text-lg text-muted-foreground mb-6">
-                Founded in 1999, BuildPro began as a small family-owned construction company with a simple mission: 
-                deliver exceptional construction services with integrity, quality, and customer-first approach.
+                Fundada en 1999, Vertical Jobs comenzó como una pequeña empresa familiar de construcción con una misión simple: 
+                entregar servicios excepcionales de construcción con integridad, calidad y un enfoque centrado en el cliente.
               </p>
               <p className="text-lg text-muted-foreground mb-6">
-                Over the past 25 years, we've grown into one of the region's most trusted construction partners, 
-                completing over 500 successful projects ranging from custom homes to large-scale commercial developments.
+                Durante los últimos 25 años, hemos crecido hasta convertirnos en uno de los socios de construcción más confiables de la región, 
+                completando más de 500 proyectos exitosos que van desde hogares personalizados hasta grandes desarrollos comerciales.
               </p>
               <p className="text-lg text-muted-foreground mb-8">
-                Today, our team of 50+ skilled professionals continues to uphold the same values that started our company: 
-                quality craftsmanship, transparent communication, and unwavering commitment to client satisfaction.
+                Hoy, nuestro equipo de más de 50 profesionales capacitados continúa manteniendo los mismos valores que iniciaron nuestra empresa: 
+                artesanía de calidad, comunicación transparente y compromiso inquebrantable con la satisfacción del cliente.
               </p>
             </div>
             <div className="relative">

@@ -10,15 +10,15 @@ const Navigation = () => {
   const { user, profile, signOut } = useAuth();
 
   const navItems = [
-    { name: "Home", path: "/" },
-    { name: "About", path: "/about" },
-    { name: "Services", path: "/services" },
-    { name: "Contact", path: "/contact" }
+    { name: "Inicio", path: "/" },
+    { name: "Nosotros", path: "/about" },
+    { name: "Servicios", path: "/services" },
+    { name: "Contacto", path: "/contact" }
   ];
 
   // Add dashboard to nav items only for admin users
   const adminNavItems = profile?.is_admin 
-    ? [...navItems, { name: "Dashboard", path: "/dashboard" }]
+    ? [...navItems, { name: "Panel", path: "/dashboard" }]
     : navItems;
 
   return (
@@ -28,7 +28,7 @@ const Navigation = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <div className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-              BuildPro
+              Vertical Jobs
             </div>
           </Link>
 
@@ -52,27 +52,27 @@ const Navigation = () => {
               {user ? (
                 <>
                   <span className="text-sm text-muted-foreground">
-                    Welcome, {profile?.username || user.email}
+                    Bienvenido, {profile?.username || user.email}
                   </span>
                   {profile?.is_admin && (
                     <Settings className="w-4 h-4 text-primary" />
                   )}
                   <Button variant="outline" size="sm" onClick={signOut}>
                     <LogOut className="w-4 h-4 mr-2" />
-                    Sign Out
+                    Cerrar Sesión
                   </Button>
                 </>
               ) : (
                 <Button variant="default" asChild>
                   <Link to="/auth">
                     <LogIn className="w-4 h-4 mr-2" />
-                    Sign In
+                    Iniciar Sesión
                   </Link>
                 </Button>
               )}
               <Button variant="default">
                 <Phone className="w-4 h-4 mr-2" />
-                Call Now
+                Llamar Ahora
               </Button>
             </div>
           </div>
@@ -116,27 +116,27 @@ const Navigation = () => {
                 {user ? (
                   <>
                     <div className="px-3 py-2 text-sm text-muted-foreground">
-                      Welcome, {profile?.username || user.email}
+                      Bienvenido, {profile?.username || user.email}
                       {profile?.is_admin && (
                         <Settings className="inline w-4 h-4 ml-2 text-primary" />
                       )}
                     </div>
                     <Button variant="outline" className="w-full" onClick={signOut}>
                       <LogOut className="w-4 h-4 mr-2" />
-                      Sign Out
+                      Cerrar Sesión
                     </Button>
                   </>
                 ) : (
                   <Button variant="default" className="w-full" asChild>
                     <Link to="/auth" onClick={() => setIsOpen(false)}>
                       <LogIn className="w-4 h-4 mr-2" />
-                      Sign In
+                      Iniciar Sesión
                     </Link>
                   </Button>
                 )}
                 <Button variant="default" className="w-full">
                   <Phone className="w-4 h-4 mr-2" />
-                  Call Now
+                  Llamar Ahora
                 </Button>
               </div>
             </div>
